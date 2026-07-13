@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" aria-hidden="true" focusable="false">
+  <rect width="900" height="1200" fill="#e8e2d8"/>
+  <rect x="34" y="34" width="832" height="1132" fill="#191c20"/>
+  <rect x="76" y="76" width="748" height="1048" fill="none" stroke="#596067" stroke-width="2"/>
+  <path d="M76 286h748M76 912h748" stroke="#596067" stroke-width="2"/>
+  <path d="M162 382h576v424H162z" fill="#252a2f"/>
+  <path d="M162 382h288v424H162z" fill="#ca7165" opacity=".76"/>
+  <path d="M450 382h288v424H450z" fill="#6ba7ad" opacity=".7"/>
+  <path d="M162 594h576M450 382v424" stroke="#e8e2d8" stroke-width="5"/>
+  <text x="120" y="160" fill="#e8e2d8" font-family="ui-monospace, monospace" font-size="30" letter-spacing="8">GFX</text>
+  <text x="120" y="206" fill="#9e9c98" font-family="ui-monospace, monospace" font-size="20" letter-spacing="4">PLACEHOLDER / 04</text>
+  <text x="780" y="1042" text-anchor="end" fill="#9e9c98" font-family="ui-monospace, monospace" font-size="16">POSTER FORMAT</text>
+</svg>

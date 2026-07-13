@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" aria-hidden="true" focusable="false">
+  <rect width="1280" height="720" fill="#181b1f"/>
+  <path d="M0 0h320v720H0zm640 0h320v720H640z" fill="#22272c"/>
+  <path d="M0 600 284 316l164 164 256-256 240 240 336-336v592H0z" fill="#282d32"/>
+  <path d="m0 600 284-284 164 164 256-256 240 240 336-336" fill="none" stroke="#6ba7ad" stroke-width="12"/>
+  <circle cx="704" cy="224" r="24" fill="#ca7165"/>
+  <rect x="54" y="54" width="1172" height="612" fill="none" stroke="#596067" stroke-width="2"/>
+  <rect x="94" y="88" width="500" height="66" fill="#181b1f" stroke="#596067"/>
+  <text x="124" y="129" fill="#e8e2d8" font-family="ui-monospace, monospace" font-size="23" letter-spacing="4">VIDEO PLACEHOLDER / 02</text>
+  <circle cx="1110" cy="558" r="54" fill="#181b1f" stroke="#e8e2d8" stroke-width="3"/><path d="m1095 527 48 31-48 31z" fill="#ca7165"/>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" aria-hidden="true" focusable="false">
+  <rect width="1280" height="720" fill="#1a1d21"/>
+  <rect x="50" y="50" width="1180" height="620" fill="#20252a" stroke="#596067" stroke-width="2"/>
+  <rect x="82" y="82" width="1116" height="438" fill="#181b1f"/>
+  <g stroke="#343a40"><path d="M82 170h1116M82 258h1116M82 346h1116M82 434h1116"/><path d="M268 82v438M454 82v438M640 82v438M826 82v438M1012 82v438"/></g>
+  <g fill="#6ba7ad"><rect x="190" y="110" width="78" height="60"/><rect x="454" y="198" width="78" height="60"/><rect x="718" y="286" width="108" height="60"/><rect x="1012" y="374" width="94" height="60"/></g>
+  <g fill="#ca7165"><rect x="346" y="374" width="108" height="60"/><rect x="826" y="110" width="78" height="60"/></g>
+  <path d="M82 478h1116" stroke="#e8e2d8" stroke-width="5"/>
+  <circle cx="1120" cy="566" r="52" fill="#20252a" stroke="#e8e2d8" stroke-width="3"/><path d="m1106 536 46 30-46 30z" fill="#ca7165"/>
+  <text x="100" y="590" fill="#e8e2d8" font-family="ui-monospace, monospace" font-size="22" letter-spacing="4">VIDEO THUMBNAIL PLACEHOLDER / 03</text>
+  <text x="100" y="620" fill="#9e9c98" font-family="ui-monospace, monospace" font-size="14">RHYTHM GRID / DECORATIVE ONLY</text>
+</svg>

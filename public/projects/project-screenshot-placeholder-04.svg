@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="project04-check" width="32" height="32" patternUnits="userSpaceOnUse">
+      <rect width="32" height="32" fill="#1a1e22"/><rect width="16" height="16" fill="#22272c"/><rect x="16" y="16" width="16" height="16" fill="#22272c"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="750" fill="#181b1f"/>
+  <rect x="42" y="42" width="1116" height="666" fill="#20252a" stroke="#596067" stroke-width="2"/>
+  <path d="M42 102h1116" stroke="#596067" stroke-width="2"/>
+  <rect x="76" y="60" width="320" height="22" fill="#30363b"/><rect x="1038" y="59" width="82" height="24" fill="#6ba7ad"/>
+  <rect x="78" y="138" width="1044" height="390" fill="url(#project04-check)" stroke="#454b51"/>
+  <path d="M498 230h204v32h38v158h-38v32H498v-32h-38V262h38z" fill="#252a2f" stroke="#e8e2d8" stroke-width="4"/>
+  <path d="M546 310h108v16H546zm0 42h76v16h-76z" fill="#ca7165"/>
+  <rect x="78" y="560" width="744" height="58" fill="#181c20" stroke="#454b51"/><rect x="846" y="560" width="276" height="58" fill="#ca7165"/>
+  <text x="106" y="596" fill="#969894" font-family="ui-monospace, monospace" font-size="16" letter-spacing="2">DROP REAL SCREENSHOT HERE</text>
+  <text x="984" y="596" text-anchor="middle" fill="#181b1f" font-family="ui-monospace, monospace" font-size="16" font-weight="700">REPLACE</text>
+  <text x="600" y="674" text-anchor="middle" fill="#e8e2d8" font-family="ui-monospace, monospace" font-size="15" letter-spacing="3">PROJECT SCREENSHOT PLACEHOLDER / 04</text>
+</svg>

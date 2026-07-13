@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="avatar-checker" width="32" height="32" patternUnits="userSpaceOnUse">
+      <rect width="32" height="32" fill="#1b1e22"/>
+      <rect width="16" height="16" fill="#24282d"/>
+      <rect x="16" y="16" width="16" height="16" fill="#24282d"/>
+    </pattern>
+  </defs>
+  <rect width="512" height="512" fill="url(#avatar-checker)"/>
+  <rect x="24" y="24" width="464" height="464" fill="none" stroke="#52585e" stroke-width="2"/>
+  <path d="M184 132h144v24h24v128h-24v24H184v-24h-24V156h24z" fill="#272b30" stroke="#e7e1d7" stroke-width="4"/>
+  <circle cx="220" cy="216" r="12" fill="#ca7165"/>
+  <circle cx="292" cy="216" r="12" fill="#6da9ae"/>
+  <path d="M216 256h80v12h-80z" fill="#e7e1d7" opacity=".78"/>
+  <path d="M72 72h56v8H80v48h-8zm368 0v56h-8V80h-48v-8zM72 440v-56h8v48h48v8zm368 0h-56v-8h48v-48h8z" fill="#ca7165"/>
+  <rect x="122" y="372" width="268" height="44" fill="#181b1f" stroke="#52585e"/>
+  <text x="256" y="399" text-anchor="middle" fill="#e7e1d7" font-family="ui-monospace, monospace" font-size="16" letter-spacing="3">AVATAR PLACEHOLDER</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="video01-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0v48" fill="none" stroke="#363b41"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="720" fill="#191c20"/><rect width="1280" height="720" fill="url(#video01-grid)"/>
+  <rect x="50" y="50" width="1180" height="620" fill="none" stroke="#596067" stroke-width="2"/>
+  <circle cx="640" cy="336" r="116" fill="#20252a" stroke="#e8e2d8" stroke-width="4"/>
+  <path d="m612 276 94 60-94 60z" fill="#ca7165"/>
+  <rect x="90" y="564" width="1100" height="54" fill="#181b1f" stroke="#596067"/>
+  <text x="116" y="598" fill="#e8e2d8" font-family="ui-monospace, monospace" font-size="21" letter-spacing="4">VIDEO THUMBNAIL PLACEHOLDER / 01</text>
+  <text x="1164" y="598" text-anchor="end" fill="#9e9c98" font-family="ui-monospace, monospace" font-size="15">16:9 / REPLACE ME</text>
+</svg>

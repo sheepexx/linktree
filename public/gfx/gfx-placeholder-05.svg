@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" aria-hidden="true" focusable="false">
+  <rect width="1000" height="650" fill="#1a1d21"/>
+  <rect x="44" y="44" width="912" height="562" fill="#20252a" stroke="#596067" stroke-width="2"/>
+  <g stroke="#596067" fill="#191c20">
+    <rect x="82" y="86" width="252" height="190"/><rect x="374" y="86" width="252" height="190"/><rect x="666" y="86" width="252" height="190"/>
+    <rect x="82" y="314" width="252" height="190"/><rect x="374" y="314" width="252" height="190"/><rect x="666" y="314" width="252" height="190"/>
+  </g>
+  <path d="M82 276h252M374 276h252M666 276h252" stroke="#6ba7ad" stroke-width="7"/>
+  <path d="M82 504h252M374 504h252M666 504h252" stroke="#ca7165" stroke-width="7"/>
+  <g fill="#e8e2d8"><circle cx="208" cy="176" r="42"/><rect x="454" y="134" width="92" height="84"/><path d="m760 218 32-84 32 84z"/></g>
+  <g fill="#9e9c98"><path d="M136 372h144v12H136zm0 32h96v12h-96z"/><path d="M428 372h144v12H428zm0 32h112v12H428z"/><path d="M720 372h144v12H720zm0 32h80v12h-80z"/></g>
+  <rect x="286" y="542" width="428" height="40" fill="#191c20" stroke="#596067"/>
+  <text x="500" y="568" text-anchor="middle" fill="#e8e2d8" font-family="ui-monospace, monospace" font-size="17" letter-spacing="4">GFX PLACEHOLDER / 05</text>
+</svg>

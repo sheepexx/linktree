@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" aria-hidden="true" focusable="false">
+  <rect width="1200" height="750" fill="#171a1e"/>
+  <rect x="42" y="42" width="1116" height="666" fill="#20252a" stroke="#5a6168" stroke-width="2"/>
+  <path d="M42 100h1116" stroke="#5a6168" stroke-width="2"/>
+  <circle cx="76" cy="71" r="8" fill="#ca7165"/><circle cx="102" cy="71" r="8" fill="#6ba7ad"/><circle cx="128" cy="71" r="8" fill="#7d817d"/>
+  <rect x="178" y="60" width="446" height="22" fill="#2a3035"/>
+  <rect x="74" y="132" width="204" height="534" fill="#1a1e22" stroke="#454b51"/>
+  <g fill="#343a40"><rect x="98" y="166" width="152" height="12"/><rect x="98" y="200" width="116" height="12"/><rect x="98" y="234" width="136" height="12"/><rect x="98" y="268" width="96" height="12"/></g>
+  <rect x="310" y="132" width="816" height="534" fill="#181c20" stroke="#454b51"/>
+  <g stroke="#343a40"><path d="M310 204h816M310 276h816M310 348h816M310 420h816M310 492h816M310 564h816"/><path d="M446 132v534M582 132v534M718 132v534M854 132v534M990 132v534"/></g>
+  <path d="M446 132v534" stroke="#6ba7ad" stroke-width="5"/><path d="M854 132v534" stroke="#ca7165" stroke-width="5"/>
+  <rect x="472" y="236" width="84" height="32" fill="#6ba7ad"/><rect x="744" y="380" width="84" height="32" fill="#ca7165"/><rect x="608" y="524" width="84" height="32" fill="#e8e2d8"/>
+  <rect x="356" y="604" width="724" height="36" fill="#20252a" stroke="#454b51"/>
+  <text x="718" y="628" text-anchor="middle" fill="#e8e2d8" font-family="ui-monospace, monospace" font-size="16" letter-spacing="3">PROJECT SCREENSHOT PLACEHOLDER / 01</text>
+</svg>

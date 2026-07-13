@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="art03-dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <rect width="30" height="30" fill="#1b1e22"/><circle cx="3" cy="3" r="2" fill="#555c63"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="900" fill="url(#art03-dots)"/>
+  <rect x="75" y="75" width="750" height="750" fill="#22272c" stroke="#ebe4d9" stroke-width="3"/>
+  <path d="M225 225h450v450H225z" fill="#1a1d21" stroke="#596067" stroke-width="3" transform="rotate(45 450 450)"/>
+  <circle cx="450" cy="450" r="148" fill="#6ca8ae" opacity=".72"/>
+  <circle cx="450" cy="450" r="82" fill="#ca7165" opacity=".9"/>
+  <path d="M450 278v344M278 450h344" stroke="#ebe4d9" stroke-width="4" opacity=".72"/>
+  <rect x="178" y="734" width="544" height="54" fill="#1a1d21" stroke="#596067"/>
+  <text x="450" y="768" text-anchor="middle" fill="#ebe4d9" font-family="ui-monospace, monospace" font-size="21" letter-spacing="4">ARTWORK PLACEHOLDER / 03</text>
+</svg>

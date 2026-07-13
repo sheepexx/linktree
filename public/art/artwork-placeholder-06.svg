@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 760" aria-hidden="true" focusable="false">
+  <rect width="980" height="760" fill="#1b1e22"/>
+  <rect x="54" y="54" width="872" height="652" fill="#22262b" stroke="#555c63" stroke-width="2"/>
+  <g fill="none" stroke-width="3">
+    <path d="M162 162h284v284H162z" stroke="#ca7165"/><path d="M534 314h284v284H534z" stroke="#6ca8ae"/>
+    <circle cx="490" cy="380" r="176" stroke="#ebe4d9" opacity=".74"/>
+  </g>
+  <path d="M162 162h284v284H162zm372 152h284v284H534z" fill="#191c20" opacity=".42"/>
+  <path d="M288 190h30v30h-30zm342 346h30v30h-30z" fill="#ebe4d9"/>
+  <rect x="120" y="612" width="740" height="54" fill="#191c20" stroke="#555c63"/>
+  <text x="490" y="646" text-anchor="middle" fill="#ebe4d9" font-family="ui-monospace, monospace" font-size="21" letter-spacing="4">ARTWORK PLACEHOLDER / 06</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="social-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0v40" fill="none" stroke="#343a40" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#191c20"/>
+  <rect width="1200" height="630" fill="url(#social-grid)" opacity=".8"/>
+  <path d="M0 504h296l126-126 152 152 238-238 388 0v338H0z" fill="#20252a"/>
+  <path d="M0 504h296l126-126 152 152 238-238h388" fill="none" stroke="#6ba7ad" stroke-width="8"/>
+  <circle cx="813" cy="292" r="28" fill="#ca7165"/>
+  <rect x="72" y="72" width="1056" height="486" fill="none" stroke="#535a61" stroke-width="2"/>
+  <rect x="108" y="108" width="390" height="56" fill="#191c20" stroke="#535a61"/>
+  <text x="132" y="143" fill="#ebe4d9" font-family="ui-monospace, monospace" font-size="22" letter-spacing="4">SOCIAL PREVIEW PLACEHOLDER</text>
+  <text x="1092" y="528" text-anchor="end" fill="#9c9b97" font-family="ui-monospace, monospace" font-size="16">1200 × 630 / REPLACE ME</text>
+</svg>
