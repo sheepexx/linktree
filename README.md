@@ -1,6 +1,6 @@
-# SHEEPEX archive
+# sheepex_
 
-A complete personal archive for the online identity **SHEEPEX / `sheepex_`**. It collects art, GFX, osu!mania material, videos, small web projects, and social links in a responsive Next.js site.
+A complete personal archive for the online identity **sheepex_**. It collects art, GFX, osu!mania material, videos, small web projects, and social links in a responsive Next.js site.
 
 The visual language is a custom creative desktop rather than a portfolio template or an operating-system clone: charcoal surfaces, muted signal colours, file-browser rows, image-editor checkerboards, dithered details, compact monospace labels, and deliberately restrained motion. Desktop uses a persistent archive sidebar and window-like content panels; mobile turns the same material into touch-friendly, stacked views with a compact bottom navigation.
 
@@ -8,7 +8,7 @@ The visual language is a custom creative desktop rather than a portfolio templat
 
 This repository intentionally ships with labelled placeholder graphics and manual data.
 
-- Use only the public identities `sheepex_` and `sheepexosu`. Do not add a real name, location, private contact detail, or business identity to content or metadata.
+- Use `sheepex_` as the sole website identity. Platform handles belong only beside their matching links: YouTube `@sheepexosu`, X / Twitter `@sheepexosu`, GitHub `@sheepexx`, and osu! `sheepex_`. Do not add a real name, location, private contact detail, or business identity to content or metadata.
 - Do not invent or infer artwork, authorship, GFX, clients, collaborations, awards, statistics, rankings, achievements, project users, stars, downloads, followers, views, or testimonials.
 - Replace placeholders only with files supplied or explicitly approved by the archive owner. Do not fill them with stock, scraped, random, or AI-generated art.
 - Treat an unverified field as unknown: keep it `null`, an empty array, or an honest note. Never make the interface look complete by fabricating data.
@@ -23,7 +23,7 @@ This repository intentionally ships with labelled placeholder graphics and manua
 - Privacy-gated YouTube and Bilibili players that load only after an explicit click
 - Project archive and a centralized link directory with no live vanity metrics
 - Decorative four-key rhythm/KPS interaction that is not required for navigation
-- Command palette (`Ctrl`/`Cmd` + `K`), modifier-based section shortcuts, keyboard-friendly controls, and accessible secret-folder alternatives
+- Command palette (`Ctrl`/`Cmd` + `K`), modifier-based section shortcuts, keyboard-friendly controls, and an accessible direct route to the optional folder
 - Default, night, pink, monochrome, and unlockable archive themes stored locally in the browser
 - Static metadata, `robots.txt`, and sitemap generation based on the public online identity
 
@@ -246,7 +246,7 @@ When introducing a new username, category, status, or other constrained value, u
 - Edit public identity copy, interests, home shortcuts, contact copy, and SEO text in `data/profile.ts`.
 - Edit the manual now-playing/making/project panel in [`data/status.ts`](data/status.ts). Keep `source: "manual"` and update `lastUpdated` when the text changes.
 - Edit section labels and order in `data/navigation.ts`. A new route also needs a matching `app/<route>/page.tsx` and metadata.
-- Edit footer/loading/empty-state text in `data/messages.ts`.
+- Edit the fixed footer in `components/layout/SiteFooter.tsx`, the route fallback in `app/loading.tsx`, and optional empty-state text in `data/messages.ts`.
 - Edit only verified profile, setup, goal, and publicly associated map-title information in `data/osu.ts`. Changing statistics remain omitted by default.
 - Edit optional secret-folder content and accessible alternatives in `data/easter-eggs.ts`; essential information must stay in the main archive.
 
@@ -277,7 +277,7 @@ Avoid automatic Pixiv scraping, a full X timeline, follower/view counters, or pr
 
 ## Accessibility notes
 
-- The shell includes a skip link, semantic landmarks, labelled navigation, visible focus rings, touch-sized primary controls, and an always-visible route to optional secret content.
+- The shell includes a skip link, semantic landmarks, labelled navigation, visible focus rings, and touch-sized primary controls. Optional secret content remains directly reachable at `/unknown`.
 - The command palette and art lightbox use modal semantics, trap focus, close with `Escape`, and restore focus. Artwork also supports previous/next arrow keys; the video playlist supports arrow, Home, and End keys.
 - Decorative graphics/icons are hidden from assistive technology where appropriate; real content needs specific alt text. Thumbnail duplicates use empty alt text to avoid repetition.
 - Status changes use live regions or text labels, not color alone. Content-warning and download decisions remain explicit data.
