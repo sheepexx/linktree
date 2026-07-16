@@ -16,7 +16,9 @@ export const projects: readonly Project[] = [
     name: "osu! Mutual Finder",
     description:
       "a browser extension for discovering likely mutual followers on osu!.",
-    status: "status unknown",
+    status: "online",
+    liveUrl:
+      "https://chromewebstore.google.com/detail/osu-mutual-finder/apgaopfjcbbhdphdlagbfhfighiboncg",
   },
   {
     id: "kps-bpm-tester",
