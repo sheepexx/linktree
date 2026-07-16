@@ -93,7 +93,7 @@ export function GallerySection() {
                       ? "(min-width: 1148px) 1100px, 100vw"
                       : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   }
-                  className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  className="object-cover"
                 />
               </span>
               <span className="mt-3 block text-sm font-medium">{item.title}</span>
