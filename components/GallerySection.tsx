@@ -74,18 +74,25 @@ export function GallerySection() {
 
       <ul className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((item, index) => (
-          <li key={item.id}>
+          <li key={item.id} className={item.wide ? "sm:col-span-2 lg:col-span-3" : undefined}>
             <button
               type="button"
               onClick={() => setLightboxIndex(index)}
               className="group w-full text-left"
             >
-              <span className="relative block aspect-[4/5] overflow-hidden border border-line">
+              <span
+                className="relative block overflow-hidden border border-line"
+                style={{ aspectRatio: item.wide ? (item.aspect ?? "4 / 1") : "4 / 5" }}
+              >
                 <Image
                   src={item.image.src}
                   alt={item.image.alt}
                   fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  sizes={
+                    item.wide
+                      ? "(min-width: 1148px) 1100px, 100vw"
+                      : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  }
                   className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                 />
               </span>
@@ -141,7 +148,10 @@ export function GallerySection() {
             onClick={(event) => event.stopPropagation()}
             className="w-full max-w-3xl"
           >
-            <div className="relative aspect-[4/3] w-full">
+            <div
+              className="relative mx-auto max-h-[72vh] w-full"
+              style={{ aspectRatio: active.aspect ?? "4 / 3" }}
+            >
               <Image
                 src={active.image.src}
                 alt={active.image.alt}
@@ -156,6 +166,16 @@ export function GallerySection() {
                 <p className="mx-auto mt-2 max-w-lg text-sm leading-relaxed text-paper/70">
                   {active.description}
                 </p>
+              )}
+              {active.href && (
+                <a
+                  href={active.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-block text-sm font-medium text-paper underline underline-offset-4 transition-opacity hover:opacity-80"
+                >
+                  osu! profile ↗
+                </a>
               )}
             </div>
           </div>

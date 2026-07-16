@@ -4,7 +4,7 @@ export const site = {
   tagline: "art, gfx, osu! and other internet things",
   description: "a personal page for things i create, play and build online.",
   seo: {
-    title: "sheepex_ — art, gfx, osu! and internet projects",
+    title: "sheepex_ · art, gfx, osu! and internet projects",
     description:
       "A personal page for art, GFX, osu!, videos, projects and social links.",
     socialPreview: "/social-preview-placeholder.png",

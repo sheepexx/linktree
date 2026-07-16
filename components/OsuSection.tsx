@@ -40,14 +40,6 @@ export function OsuSection() {
               </li>
             ))}
           </ul>
-          <p className="mt-10 text-sm text-muted">selected maps</p>
-          <ul className="mt-3 divide-y divide-line border-y border-line">
-            {osu.highlights.map((highlight) => (
-              <li key={highlight.id} className="py-4 text-sm">
-                {highlight.title}
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </Section>

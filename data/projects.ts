@@ -25,12 +25,4 @@ export const projects: readonly Project[] = [
     status: "online",
     liveUrl: "https://sheepex.net/kps-tester/",
   },
-  {
-    id: "osu-background-mp3-extractor",
-    name: "osu! Background and MP3 Extractor",
-    description:
-      "a browser-based tool for extracting backgrounds and audio from osu! beatmap files.",
-    status: "online",
-    liveUrl: "https://sheepex.net/osu-bg-extractor/",
-  },
 ];

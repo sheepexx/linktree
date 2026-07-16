@@ -8,21 +8,16 @@ export interface GalleryItem {
     src: string;
     alt: string;
   };
-  /** Optional short text shown in the lightbox only. */
   description?: string;
-}
-
-export interface OsuHighlight {
-  id: string;
-  title: string;
-  url?: string;
+  href?: string;
+  aspect?: string;
+  wide?: boolean;
 }
 
 export interface OsuData {
   username: string;
   mainMode: string;
   description: string;
-  highlights: readonly OsuHighlight[];
 }
 
 export type ProjectStatus = "online" | "offline" | "status unknown";

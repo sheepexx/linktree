@@ -1,73 +1,76 @@
 import type { GalleryItem } from "../lib/content-types";
 
+import { pixivArt } from "./pixiv-art";
+
 export const galleryDescription =
   "selected art and graphics. more lives on pixiv and my hard drive.";
 
-export const gallery = [
+const gfxItems: readonly GalleryItem[] = [
   {
-    id: "artwork-placeholder-01",
-    title: "artwork placeholder 01",
-    category: "art",
-    image: {
-      src: "/art/artwork-placeholder-01.svg",
-      alt: "clearly labelled empty artwork slot 01",
-    },
-    description:
-      "labelled placeholder — replace this record and file only when real artwork is provided.",
-  },
-  {
-    id: "artwork-placeholder-02",
-    title: "artwork placeholder 02",
-    category: "art",
-    image: {
-      src: "/art/artwork-placeholder-02.svg",
-      alt: "clearly labelled empty landscape artwork slot 02",
-    },
-    description:
-      "labelled placeholder — no artwork or authorship is claimed here.",
-  },
-  {
-    id: "artwork-placeholder-03",
-    title: "artwork placeholder 03",
-    category: "art",
-    image: {
-      src: "/art/artwork-placeholder-03.svg",
-      alt: "clearly labelled empty square artwork slot 03",
-    },
-    description:
-      "labelled placeholder — add a manually supplied image, title and details later.",
-  },
-  {
-    id: "gfx-placeholder-01",
-    title: "gfx placeholder 01",
+    id: "gfx-26699280",
+    title: "sheepex_",
     category: "gfx",
     image: {
-      src: "/gfx/gfx-placeholder-01.svg",
-      alt: "clearly labelled empty GFX slot 01",
+      src: "/gfx/26699280.png",
+      alt: "osu! profile banner for sheepex_",
     },
-    description:
-      "labelled placeholder — replace with a manually supplied graphic and verified details.",
+    description: "osu! profile banner for sheepex_.",
+    href: "https://osu.ppy.sh/u/26699280",
+    aspect: "2000 / 500",
+    wide: true,
   },
   {
-    id: "gfx-placeholder-02",
-    title: "gfx placeholder 02",
+    id: "gfx-23313260",
+    title: "zeroxdd",
     category: "gfx",
     image: {
-      src: "/gfx/gfx-placeholder-02.svg",
-      alt: "clearly labelled empty wide GFX slot 02",
+      src: "/gfx/23313260.png",
+      alt: "osu! profile banner for zeroxdd",
     },
-    description:
-      "labelled placeholder sized for a future banner, header or thumbnail.",
+    description: "osu! profile banner for zeroxdd.",
+    href: "https://osu.ppy.sh/u/23313260",
+    aspect: "2000 / 500",
+    wide: true,
   },
   {
-    id: "gfx-placeholder-03",
-    title: "gfx placeholder 03",
+    id: "gfx-28628229",
+    title: "-Hatsune Miku-",
     category: "gfx",
     image: {
-      src: "/gfx/gfx-placeholder-03.svg",
-      alt: "clearly labelled empty square GFX slot 03",
+      src: "/gfx/28628229.png",
+      alt: "osu! profile banner for -Hatsune Miku-",
     },
-    description:
-      "labelled placeholder sized for a future avatar or profile picture.",
+    description: "osu! profile banner for -Hatsune Miku-.",
+    href: "https://osu.ppy.sh/u/28628229",
+    aspect: "2000 / 500",
+    wide: true,
   },
-] as const satisfies readonly GalleryItem[];
+  {
+    id: "gfx-37767001",
+    title: "-Zell",
+    category: "gfx",
+    image: {
+      src: "/gfx/37767001.png",
+      alt: "osu! profile banner for -Zell",
+    },
+    description: "osu! profile banner for -Zell.",
+    href: "https://osu.ppy.sh/u/37767001",
+    aspect: "2000 / 500",
+    wide: true,
+  },
+  {
+    id: "gfx-38198321",
+    title: "Twinx",
+    category: "gfx",
+    image: {
+      src: "/gfx/38198321.png",
+      alt: "osu! profile banner for Twinx",
+    },
+    description: "osu! profile banner for Twinx.",
+    href: "https://osu.ppy.sh/u/38198321",
+    aspect: "2000 / 500",
+    wide: true,
+  },
+];
+
+export const gallery: readonly GalleryItem[] = [...pixivArt, ...gfxItems];
