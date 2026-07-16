@@ -10,7 +10,7 @@ export const site = {
     socialPreview: "/social-preview-placeholder.png",
   },
   avatar: {
-    src: "/avatar-placeholder.svg",
+    src: "/avatar.jpg",
     alt: "avatar of sheepex_",
   },
 } as const;
