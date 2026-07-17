@@ -2,6 +2,16 @@ import type { GalleryItem } from "../lib/content-types";
 
 export const pixivArt: readonly GalleryItem[] = [
   {
+    "id": "pixiv-147287605",
+    "title": "ななひ！",
+    "category": "art",
+    "image": {
+      "src": "/art/pixiv-147287605.jpg",
+      "alt": "ななひ！ by sheepex_"
+    },
+    "aspect": "2480 / 3308"
+  },
+  {
     "id": "pixiv-146749322",
     "title": "❤️",
     "category": "art",
@@ -48,16 +58,6 @@ export const pixivArt: readonly GalleryItem[] = [
     "image": {
       "src": "/art/pixiv-145899203.jpg",
       "alt": "botan x ibuki by sheepex_"
-    },
-    "aspect": "2480 / 3308"
-  },
-  {
-    "id": "pixiv-145861738",
-    "title": "botan x ibuki sketch",
-    "category": "art",
-    "image": {
-      "src": "/art/pixiv-145861738.jpg",
-      "alt": "botan x ibuki sketch by sheepex_"
     },
     "aspect": "2480 / 3308"
   }
