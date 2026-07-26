@@ -6,10 +6,16 @@ const USER_ID = "115687408";
 const ART_COUNT = Number(process.env.PIXIV_COUNT ?? 6);
 const INCLUDE_R18 = process.env.PIXIV_INCLUDE_R18 === "1";
 
+// pixiv hides "sensitive" works (sl >= 4) from logged-out requests entirely:
+// they are absent from the profile listing and their image urls come back null.
+// set PIXIV_SESSION to a PHPSESSID cookie to see them.
+const SESSION = process.env.PIXIV_SESSION?.trim();
+
 const HEADERS = {
   "User-Agent":
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
   Referer: "https://www.pixiv.net/",
+  ...(SESSION ? { Cookie: `PHPSESSID=${SESSION}` } : {}),
 };
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -29,7 +35,9 @@ async function fetchJson(url) {
 }
 
 async function main() {
-  console.log(`fetching artwork list for pixiv user ${USER_ID} ...`);
+  console.log(
+    `fetching artwork list for pixiv user ${USER_ID} (${SESSION ? "authenticated" : "anonymous - sensitive works will be missing"}) ...`,
+  );
   const profile = await fetchJson(
     `https://www.pixiv.net/ajax/user/${USER_ID}/profile/all?lang=en`,
   );
@@ -47,6 +55,12 @@ async function main() {
     if (!INCLUDE_R18 && illust.xRestrict > 0) {
       console.log(`  skipping ${id} (age-restricted)`);
       continue;
+    }
+    if (!illust.urls?.regular) {
+      throw new Error(
+        `${id} ("${illust.title}") has no image url (sl=${illust.sl}). ` +
+          `pixiv withholds these unless authenticated - set PIXIV_SESSION to a PHPSESSID cookie.`,
+      );
     }
     selected.push({
       id,

@@ -18,23 +18,55 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          # full history so a rebase retry works if main moved mid-run
+          fetch-depth: 0
 
       - uses: actions/setup-node@v6
         with:
           node-version: 24
 
       - run: node scripts/fetch-pixiv.mjs
+        env:
+          # without this, pixiv hides sensitive-flagged (sl >= 4) works
+          PIXIV_SESSION: ${{ secrets.PIXIV_PHPSESSID }}
 
       - id: commit
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          changes="$(git status --porcelain)"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # always land a commit so every run leaves a record, even a no-op one.
+          # only flag changed=true for real edits - that gates the pages rebuild.
+          if [ -z "$changes" ]; then
+            echo "no new artwork - recording empty sync commit" \
+              | tee -a "$GITHUB_STEP_SUMMARY"
+            git commit --allow-empty -m "sync pixiv art (no changes)"
+          else
+            {
+              echo "synced pixiv art:"
+              echo '```'
+              echo "$changes"
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
             git add -A
             git commit -m "sync pixiv art"
-            git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+          for attempt in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            echo "push attempt $attempt failed, rebasing onto origin/main"
+            git fetch origin main
+            git rebase origin/main
+          done
+
+          echo "::error::push failed after 3 attempts"
+          exit 1
 
       - if: steps.commit.outputs.changed == 'true'
         run: gh workflow run pages.yml --ref main
