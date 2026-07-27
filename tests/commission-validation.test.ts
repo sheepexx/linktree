@@ -5,12 +5,13 @@ import {
   validateCommissionSubmission,
   validateEmail,
 } from "../lib/commission/validation";
+import { commissionConfig } from "../data/commissions";
 
 const NOW = new Date("2026-01-01T18:45:00.000Z");
 
 function validSubmission(overrides: Record<string, unknown> = {}) {
   return {
-    commissionType: "avatar",
+    commissionType: "character-art",
     intendedUse: "personal",
     complexity: "clean",
     concepts: 1,
@@ -66,6 +67,16 @@ test("unknown and incorrectly typed option identifiers are rejected", () => {
     "revisions",
     "outputFormat",
   ]);
+});
+
+test("every configured commission offering is accepted", () => {
+  for (const option of commissionConfig.commissionTypes) {
+    const result = validateCommissionSubmission(
+      validSubmission({ commissionType: option.id }),
+      NOW,
+    );
+    assert.equal(result.success, true, option.id);
+  }
 });
 
 test("required text fields and their configured limits are enforced", () => {
@@ -254,7 +265,7 @@ test("a valid submission is sanitized and normalized", () => {
   if (!result.success) return;
 
   assert.deepEqual(result.data, {
-    commissionType: "avatar",
+    commissionType: "character-art",
     intendedUse: "personal",
     complexity: "clean",
     concepts: 1,

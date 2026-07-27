@@ -52,25 +52,50 @@ export function TypeStep({
       <StepHeading
         eyebrow="01 / Start here"
         title="What are we making?"
-        description="Pick the closest starting point. If your idea sits between categories, choose Custom GFX and describe it in the next step."
+        description="Pick the closest starting point. If your idea sits between categories, choose Custom request and describe it in the next step."
         headingRef={headingRef}
       />
       <fieldset>
         <legend className="sr-only">Commission type</legend>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {commissionConfig.commissionTypes.map((option, index) => (
-            <OptionCard
-              key={option.id}
-              name="commissionType"
-              value={option.id}
-              checked={value === option.id}
-              onChange={() => onChange(option.id)}
-              title={option.label}
-              description={option.description}
-              meta={`from ${formatPrice(option.price.min)}`}
-              marker={String(index + 1).padStart(2, "0")}
-            />
-          ))}
+        <div className="space-y-9">
+          {commissionConfig.commissionGroups.map((group) => {
+            const options = commissionConfig.commissionTypes.filter(
+              (option) => option.group === group.id,
+            );
+
+            return (
+              <section key={group.id} aria-labelledby={`commission-group-${group.id}`}>
+                <h3
+                  id={`commission-group-${group.id}`}
+                  className="text-sm font-semibold"
+                >
+                  {group.label}
+                </h3>
+                <p className="mt-1 text-xs text-muted">{group.description}</p>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {options.map((option) => {
+                    const index = commissionConfig.commissionTypes.findIndex(
+                      (entry) => entry.id === option.id,
+                    );
+
+                    return (
+                      <OptionCard
+                        key={option.id}
+                        name="commissionType"
+                        value={option.id}
+                        checked={value === option.id}
+                        onChange={() => onChange(option.id)}
+                        title={option.label}
+                        description={option.description}
+                        meta={`from ${formatPrice(option.price.min)}`}
+                        marker={String(index + 1).padStart(2, "0")}
+                      />
+                    );
+                  })}
+                </div>
+              </section>
+            );
+          })}
         </div>
       </fieldset>
       <StepActions nextLabel="shape the details" />
@@ -198,6 +223,43 @@ export function DetailsStep({
           </div>
         </OptionSection>
 
+        {form.commissionType === "banner" && (
+          <OptionSection
+            legend="Banner size preset"
+            hint="Choose a platform preset, then adjust the size below if needed."
+          >
+            <div className="grid gap-3 sm:grid-cols-2">
+              {commissionConfig.bannerPresets.map((preset) => {
+                const selected = form.dimensions === preset.dimensions;
+
+                return (
+                  <button
+                    key={preset.id}
+                    type="button"
+                    aria-pressed={selected}
+                    onClick={() => onChange("dimensions", preset.dimensions)}
+                    className={`min-h-28 border p-4 text-left transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-paper ${
+                      selected
+                        ? "border-accent bg-[#f7f0eb]"
+                        : "border-line hover:border-muted"
+                    }`}
+                  >
+                    <span className="block text-sm font-semibold">
+                      {preset.label}
+                    </span>
+                    <span className="mt-1 block text-xs font-medium text-accent">
+                      {preset.dimensions}
+                    </span>
+                    <span className="mt-2 block text-xs leading-relaxed text-muted">
+                      {preset.note}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </OptionSection>
+        )}
+
         <div className="grid gap-6 sm:grid-cols-2">
           <TextField
             id="dimensions"
@@ -213,7 +275,7 @@ export function DetailsStep({
           <TextField
             id="deliveryDate"
             label="Preferred delivery date"
-            hint="Optional — leave blank if timing is flexible."
+            hint="Optional. Leave blank if timing is flexible."
             type="date"
             minOffsetDays={commissionConfig.rushPricing.at(-1)!.minDays}
             value={form.deliveryDate}
@@ -262,7 +324,7 @@ export function DetailsStep({
         <TextAreaField
           id="referenceLinks"
           label="Reference links"
-          hint={`Optional — one public http(s) link per line, up to ${commissionConfig.limits.referenceLinks}.`}
+          hint={`Optional. Add one public http(s) link per line, up to ${commissionConfig.limits.referenceLinks}.`}
           placeholder={"https://…\nhttps://…"}
           rows={4}
           value={form.referenceLinks}

@@ -143,11 +143,14 @@ export function calculateEstimate(
     });
   }
 
-  const subtotal = lines.reduce(
-    (sum, line) => ({
-      min: sum.min + line.min,
-      max: sum.max + line.max,
-    }),
+  const usageSubtotal = lines.reduce(
+    (sum, line) =>
+      line.id === "deadline"
+        ? sum
+        : {
+            min: sum.min + line.min,
+            max: sum.max + line.max,
+          },
     { min: 0, max: 0 },
   );
 
@@ -157,8 +160,8 @@ export function calculateEstimate(
       id: "commercial",
       label: commissionConfig.commercialUse.label,
       detail: `${percentage}% usage fee`,
-      min: Math.round((subtotal.min * percentage) / 100),
-      max: Math.round((subtotal.max * percentage) / 100),
+      min: Math.round((usageSubtotal.min * percentage) / 100),
+      max: Math.round((usageSubtotal.max * percentage) / 100),
     });
   }
 

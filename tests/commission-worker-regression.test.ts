@@ -147,7 +147,7 @@ function baseEnv(database: D1Database): Env {
 
 function validSubmission(): CommissionSubmission {
   return {
-    commissionType: "cover",
+    commissionType: "thumbnail",
     intendedUse: "creator",
     complexity: "detailed",
     concepts: 2,

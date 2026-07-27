@@ -341,7 +341,7 @@ export function buildCustomerConfirmationEmail(
         </tr>
       </table>
       <p style="margin:24px 0 0;color:#6e675e;font-size:13px;line-height:1.6">${escapeHtml(commissionConfig.estimateDisclaimer)}</p>
-      <p style="margin:24px 0 0;color:#6e675e;font-size:14px;line-height:1.6">— ${escapeHtml(brand.name)}</p>
+      <p style="margin:24px 0 0;color:#6e675e;font-size:14px;line-height:1.6">From ${escapeHtml(brand.name)}</p>
     `,
   );
   const text = [
@@ -359,7 +359,7 @@ export function buildCustomerConfirmationEmail(
     commissionConfig.estimateDisclaimer,
     "",
     "I’ll contact you by email or your preferred social platform.",
-    `— ${brand.name}`,
+    `From ${brand.name}`,
   ].join("\n");
 
   return {
@@ -381,7 +381,7 @@ export function buildOwnerNotificationEmail(
   const details = describeSubmission(submission);
   const contact = describeContact(submission);
   const estimateLabel = formatEstimateRange(estimate);
-  const subject = `New commission request — ${requestId}`;
+  const subject = `New commission request: ${requestId}`;
   const html = emailShell(
     brand,
     `New commission request ${requestId} from ${submission.email}.`,

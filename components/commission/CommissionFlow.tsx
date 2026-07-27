@@ -49,7 +49,7 @@ const interactiveStepLabels = [
 ] as const;
 
 const initialForm: CommissionFormState = {
-  commissionType: "avatar",
+  commissionType: "character-art",
   intendedUse: "personal",
   complexity: "clean",
   concepts: 1,

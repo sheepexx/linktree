@@ -21,7 +21,7 @@ const BRAND: EmailBrand = {
 
 function maliciousSubmission(): CommissionSubmission {
   return {
-    commissionType: "cover",
+    commissionType: "thumbnail",
     intendedUse: "creator",
     complexity: "detailed",
     concepts: 2,

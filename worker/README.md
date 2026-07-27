@@ -81,17 +81,17 @@ migration with `npm run db:migrate:local`, and run `npm run dev`.
 
 Required secrets:
 
-- `RESEND_API_KEY` — Resend API key.
-- `VERIFICATION_HMAC_SECRET` — at least 32 random bytes; hashes verification
+- `RESEND_API_KEY`: Resend API key.
+- `VERIFICATION_HMAC_SECRET`: at least 32 random bytes; hashes verification
   codes and rate-limit identifiers.
-- `TOKEN_HMAC_SECRET` — a different secret of at least 32 random bytes; hashes
+- `TOKEN_HMAC_SECRET`: a different secret of at least 32 random bytes; hashes
   verified tokens and idempotency keys.
 
 Required Worker variables:
 
-- `ALLOWED_ORIGINS` — comma-separated exact origins. Wildcards are ignored.
-- `EMAIL_FROM` — a sender on a domain verified in Resend.
-- `COMMISSION_OWNER_EMAIL` — recipient for the private owner notification.
+- `ALLOWED_ORIGINS`: comma-separated exact origins. Wildcards are ignored.
+- `EMAIL_FROM`: a sender on a domain verified in Resend.
+- `COMMISSION_OWNER_EMAIL`: recipient for the private owner notification.
 
 Optional Worker variables:
 

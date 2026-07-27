@@ -132,7 +132,7 @@ class CapturingEmailProvider implements EmailProvider {
 
 function submissionInput(): CommissionSubmission {
   return {
-    commissionType: "cover",
+    commissionType: "thumbnail",
     intendedUse: "creator",
     complexity: "detailed",
     concepts: 2,
@@ -224,27 +224,24 @@ test("POST /v1/commissions persists a verified request, prices it on the server,
   assert.equal(body.confirmationPending, undefined);
   assert.deepEqual(
     { currency: body.estimate.currency, min: body.estimate.min, max: body.estimate.max },
-    { currency: "USD", min: 36_000, max: 50_250 },
+    { currency: "USD", min: 7_475, max: 9_775 },
   );
   assert.equal(
-    body.estimate.lines.some(
-      (line) =>
-        line.id === "deadline" && line.min === 4_500 && line.max === 6_500,
-    ),
-    true,
+    body.estimate.lines.some((line) => line.id === "deadline"),
+    false,
   );
   assert.equal(
     body.estimate.lines.some(
       (line) =>
         line.id === "commercial" &&
-        line.min === 12_000 &&
-        line.max === 16_750,
+        line.min === 975 &&
+        line.max === 1_275,
     ),
     true,
   );
 
   assert.deepEqual(body.summary, {
-    commissionType: "cover",
+    commissionType: "thumbnail",
     intendedUse: "creator",
     complexity: "detailed",
     concepts: 2,
@@ -294,8 +291,8 @@ test("POST /v1/commissions persists a verified request, prices it on the server,
   );
   assert.deepEqual(insertRequest.values.slice(5, 8), [
     "USD",
-    36_000,
-    50_250,
+    7_475,
+    9_775,
   ]);
 
   assert.equal(emailProvider.messages.length, 2);
@@ -311,7 +308,7 @@ test("POST /v1/commissions persists a verified request, prices it on the server,
     assert.match(message.subject, new RegExp(REQUEST_ID));
     assert.match(message.html, new RegExp(REQUEST_ID));
     assert.match(message.text, new RegExp(REQUEST_ID));
-    assert.match(message.text, /Estimated total: \$360–\$503/);
+    assert.match(message.text, /Estimated total: \$75–\$98/);
   }
 
   assert.equal(database.runs.length, 2);

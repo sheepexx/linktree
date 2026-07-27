@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { site } from "@/data/site";
 
@@ -22,9 +23,15 @@ export function Hero() {
           {site.description}
         </p>
         <div className="mt-10 flex flex-wrap gap-4">
+          <Link
+            href="/commission/"
+            className="bg-accent px-6 py-3 text-sm font-medium text-paper transition-opacity hover:opacity-80"
+          >
+            request a commission
+          </Link>
           <a
             href="#art"
-            className="bg-ink px-6 py-3 text-sm font-medium text-paper transition-opacity hover:opacity-80"
+            className="border border-ink px-6 py-3 text-sm font-medium transition-colors hover:bg-ink hover:text-paper"
           >
             view work
           </a>
