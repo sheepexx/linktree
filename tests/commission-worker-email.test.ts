@@ -7,6 +7,7 @@ import {
   buildCustomerConfirmationEmail,
   buildOwnerNotificationEmail,
   buildVerificationEmail,
+  ResendEmailProvider,
   type EmailBrand,
 } from "../worker/src/email";
 
@@ -67,6 +68,32 @@ test("verification email includes HTML and text while escaping interpolated HTML
   );
   assert.equal(email.html.includes(BRAND.siteUrl), false);
   assert.match(email.html, /&quot;&lt;unsafe&gt;&amp;value/);
+});
+
+test("Resend uses Cloudflare's global fetch with the correct receiver", async () => {
+  const originalFetch = globalThis.fetch;
+  const mockFetch = function (this: unknown): Promise<Response> {
+    assert.equal(this, globalThis);
+    return Promise.resolve(new Response(null, { status: 200 }));
+  } as typeof fetch;
+
+  globalThis.fetch = mockFetch;
+  try {
+    const provider = new ResendEmailProvider({
+      apiKey: "test-api-key",
+      from: "commissions@sheepex.org",
+    });
+
+    await provider.send({
+      to: "delivered@resend.dev",
+      subject: "Test verification",
+      html: "<p>Test verification</p>",
+      text: "Test verification",
+      idempotencyKey: "test-global-fetch-receiver",
+    });
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
 });
 
 test("customer and owner emails contain complete HTML/text summaries and escape user data", () => {

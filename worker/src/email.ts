@@ -45,7 +45,7 @@ export class ResendEmailProvider implements EmailProvider {
     if (!options.apiKey || !options.from) {
       throw new EmailDeliveryError();
     }
-    this.fetcher = options.fetcher ?? fetch;
+    this.fetcher = options.fetcher ?? globalThis.fetch.bind(globalThis);
   }
 
   async send(message: OutgoingEmail): Promise<void> {
@@ -61,9 +61,11 @@ export class ResendEmailProvider implements EmailProvider {
       response = await this.fetcher("https://api.resend.com/emails", {
         method: "POST",
         headers: {
+          Accept: "application/json",
           Authorization: `Bearer ${this.options.apiKey}`,
           "Content-Type": "application/json",
           "Idempotency-Key": message.idempotencyKey,
+          "User-Agent": "sheepex-commissions/1.0",
         },
         body: JSON.stringify({
           from: this.options.from,
@@ -77,7 +79,16 @@ export class ResendEmailProvider implements EmailProvider {
         }),
         signal: controller.signal,
       });
-    } catch {
+    } catch (error) {
+      const errorName = error instanceof Error ? error.name : typeof error;
+      const errorMessage =
+        error instanceof Error
+          ? error.message.replace(/[\r\n]+/g, " ").slice(0, 500)
+          : "Unknown email transport error";
+      console.error("Resend email transport failed", {
+        errorName,
+        errorMessage,
+      });
       throw new EmailDeliveryError();
     } finally {
       clearTimeout(timeout);

@@ -15,6 +15,7 @@ import {
   buildCustomerConfirmationEmail,
   buildOwnerNotificationEmail,
   buildVerificationEmail,
+  EmailDeliveryError,
   type EmailBrand,
   type EmailProvider,
   ResendEmailProvider,
@@ -646,7 +647,12 @@ async function handleVerificationSend(
         emailBrand(env),
       ),
     );
-  } catch {
+  } catch (error) {
+    const providerStatus =
+      error instanceof EmailDeliveryError ? error.status : null;
+    console.error("Verification email provider rejected delivery", {
+      status: providerStatus,
+    });
     await releaseSendCooldown(
       env,
       emailKey,
@@ -1763,6 +1769,18 @@ export function createWorker(dependencies: WorkerDependencies = {}) {
           origin.allowedOrigin,
         );
       } catch (error) {
+        if (!(error instanceof HttpError)) {
+          const errorName =
+            error instanceof Error ? error.name : typeof error;
+          const errorMessage =
+            error instanceof Error
+              ? error.message.replace(/[\r\n]+/g, " ").slice(0, 500)
+              : "Unknown internal error";
+          console.error("Unhandled commission Worker error", {
+            errorName,
+            errorMessage,
+          });
+        }
         const response =
           error instanceof HttpError
             ? errorResponse(error)
