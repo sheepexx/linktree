@@ -1,6 +1,6 @@
 export const site = {
   name: "sheepex_",
-  url: "https://sheepex.net/",
+  url: "https://sheepex.org/",
   tagline: "art, gfx, osu! and other internet things",
   description: "a personal page for things i create, play and build online.",
   seo: {

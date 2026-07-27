@@ -2,6 +2,10 @@
 
 A complete personal archive for the online identity **sheepex_**. It collects art, GFX, osu!mania material, videos, small web projects, and social links in a responsive Next.js site.
 
+The guided commission request flow lives at `/commission/`. Its editable
+pricing, static-frontend connection, and secure Worker/D1/Resend setup are
+documented in [`COMMISSION_SETUP.md`](COMMISSION_SETUP.md).
+
 The visual language is a custom creative desktop rather than a portfolio template or an operating-system clone: charcoal surfaces, muted signal colours, file-browser rows, image-editor checkerboards, dithered details, compact monospace labels, and deliberately restrained motion. Desktop uses a persistent archive sidebar and window-like content panels; mobile turns the same material into touch-friendly, stacked views with a compact bottom navigation.
 
 ## Content policy: read this first
@@ -160,7 +164,7 @@ Runtime dependencies:
 
 | Package | Version | Purpose |
 | --- | --- | --- |
-| `next` | `16.2.10` | App Router, metadata, image optimization, and production server |
+| `next` | `16.2.12` | App Router, metadata, image optimization, and production server |
 | `react` | `19.2.7` | Interface rendering |
 | `react-dom` | `19.2.7` | Browser rendering |
 | `framer-motion` | `12.42.2` | Page, dialog, and gallery transitions with reduced-motion handling |
@@ -174,7 +178,8 @@ Development dependencies:
 | `tailwindcss` | `4.3.2` | Utility CSS and design tokens |
 | `@tailwindcss/postcss` | `4.3.2` | Tailwind PostCSS integration |
 | `eslint` | `^9.0.0` | Static analysis |
-| `eslint-config-next` | `16.2.10` | Next.js ESLint rules |
+| `eslint-config-next` | `16.2.12` | Next.js ESLint rules |
+| `tsx` | `4.23.1` | TypeScript test runner for commission pricing, validation, and Worker tests |
 | `@types/node` | `^24.0.0` | Node.js types |
 | `@types/react` | `^19.2.0` | React types |
 | `@types/react-dom` | `^19.2.0` | React DOM types |

@@ -1,0 +1,245 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+
+import {
+  calculateEstimate,
+  formatEstimate,
+  formatPrice,
+  getDaysUntil,
+  getRushPrice,
+} from "../lib/commission/pricing";
+import type { CommissionDetails } from "../lib/commission/types";
+
+const NOW = new Date("2026-01-01T18:45:00.000Z");
+
+function pricingDetails(
+  overrides: Partial<CommissionDetails> = {},
+): CommissionDetails {
+  return {
+    commissionType: "avatar",
+    intendedUse: "personal",
+    complexity: "clean",
+    concepts: 1,
+    revisions: 1,
+    outputFormat: "digital",
+    dimensions: "1920 x 1080",
+    deliveryDate: "",
+    commercialUse: false,
+    projectDescription: "A sufficiently detailed project description.",
+    additionalNotes: "",
+    referenceLinks: [],
+    ...overrides,
+  };
+}
+
+test("calculateEstimate preserves the base price range", () => {
+  const estimate = calculateEstimate(pricingDetails(), NOW);
+
+  assert.deepEqual(
+    { currency: estimate.currency, min: estimate.min, max: estimate.max },
+    { currency: "USD", min: 6_500, max: 8_500 },
+  );
+  assert.deepEqual(
+    estimate.lines.map(({ id, min, max }) => ({ id, min, max })),
+    [
+      { id: "type", min: 6_500, max: 8_500 },
+      { id: "use", min: 0, max: 0 },
+      { id: "complexity", min: 0, max: 0 },
+      { id: "concepts", min: 0, max: 0 },
+      { id: "revisions", min: 0, max: 0 },
+      { id: "format", min: 0, max: 0 },
+    ],
+  );
+});
+
+test("calculateEstimate adds option modifiers, rush pricing, and commercial usage", () => {
+  const estimate = calculateEstimate(
+    pricingDetails({
+      commissionType: "cover",
+      intendedUse: "creator",
+      complexity: "detailed",
+      concepts: 2,
+      revisions: 2,
+      outputFormat: "high-res",
+      deliveryDate: "2026-01-11",
+      commercialUse: true,
+    }),
+    NOW,
+  );
+
+  assert.deepEqual(
+    estimate.lines.map(({ id, min, max }) => ({ id, min, max })),
+    [
+      { id: "type", min: 9_500, max: 14_000 },
+      { id: "use", min: 1_500, max: 2_500 },
+      { id: "complexity", min: 3_000, max: 5_000 },
+      { id: "concepts", min: 2_500, max: 2_500 },
+      { id: "revisions", min: 1_500, max: 1_500 },
+      { id: "format", min: 1_500, max: 1_500 },
+      { id: "deadline", min: 4_500, max: 6_500 },
+      { id: "commercial", min: 12_000, max: 16_750 },
+    ],
+  );
+  assert.deepEqual(
+    { min: estimate.min, max: estimate.max },
+    { min: 36_000, max: 50_250 },
+  );
+});
+
+test("commercial usage is calculated from the complete pre-fee subtotal", () => {
+  const estimate = calculateEstimate(
+    pricingDetails({
+      commissionType: "custom",
+      intendedUse: "release",
+      complexity: "advanced",
+      concepts: 3,
+      revisions: 3,
+      outputFormat: "print",
+      deliveryDate: "2026-01-04",
+      commercialUse: true,
+    }),
+    NOW,
+  );
+
+  const commercial = estimate.lines.find((line) => line.id === "commercial");
+  const preFeeSubtotal = estimate.lines
+    .filter((line) => line.id !== "commercial")
+    .reduce(
+      (total, line) => ({
+        min: total.min + line.min,
+        max: total.max + line.max,
+      }),
+      { min: 0, max: 0 },
+    );
+
+  assert.deepEqual(commercial, {
+    id: "commercial",
+    label: "Commercial usage",
+    detail: "50% usage fee",
+    min: Math.round(preFeeSubtotal.min * 0.5),
+    max: Math.round(preFeeSubtotal.max * 0.5),
+  });
+  assert.equal(estimate.min, preFeeSubtotal.min + commercial!.min);
+  assert.equal(estimate.max, preFeeSubtotal.max + commercial!.max);
+});
+
+test("rush tiers use inclusive day boundaries and omit flexible timing", () => {
+  const flexibleTier = getRushPrice("2026-01-22", NOW);
+  assert.deepEqual(
+    flexibleTier && {
+      label: flexibleTier.label,
+      price: flexibleTier.price,
+    },
+    {
+    label: "Flexible timing",
+    price: { min: 0, max: 0 },
+    },
+  );
+
+  const twoWeekTier = getRushPrice("2026-01-15", NOW);
+  assert.deepEqual(
+    twoWeekTier && {
+      label: twoWeekTier.label,
+      price: twoWeekTier.price,
+    },
+    {
+    label: "2–3 week delivery",
+    price: { min: 2_000, max: 3_000 },
+    },
+  );
+
+  const oneWeekTier = getRushPrice("2026-01-08", NOW);
+  assert.deepEqual(
+    oneWeekTier && {
+      label: oneWeekTier.label,
+      price: oneWeekTier.price,
+    },
+    {
+    label: "1–2 week rush",
+    price: { min: 4_500, max: 6_500 },
+    },
+  );
+
+  const underOneWeekTier = getRushPrice("2026-01-04", NOW);
+  assert.deepEqual(
+    underOneWeekTier && {
+      label: underOneWeekTier.label,
+      price: underOneWeekTier.price,
+    },
+    {
+    label: "Under 1 week rush",
+    price: { min: 8_000, max: 12_000 },
+    },
+  );
+  assert.equal(getRushPrice("2026-01-03", NOW), null);
+
+  const flexible = calculateEstimate(
+    pricingDetails({ deliveryDate: "2026-01-22" }),
+    NOW,
+  );
+  assert.equal(
+    flexible.lines.some((line) => line.id === "deadline"),
+    false,
+  );
+});
+
+test("getDaysUntil validates calendar dates and compares UTC calendar days", () => {
+  assert.equal(getDaysUntil("2026-01-02", NOW), 1);
+  assert.equal(
+    getDaysUntil("2026-01-01", new Date("2026-01-01T23:59:59.999Z")),
+    0,
+  );
+  assert.equal(getDaysUntil("2024-02-29", new Date("2024-02-26T12:00:00Z")), 3);
+  assert.equal(getDaysUntil("2025-02-29", NOW), null);
+  assert.equal(getDaysUntil("2026-13-01", NOW), null);
+  assert.equal(getDaysUntil("01/02/2026", NOW), null);
+  assert.equal(getDaysUntil("", NOW), null);
+});
+
+test("calculateEstimate rejects unknown option identifiers", () => {
+  assert.throws(
+    () =>
+      calculateEstimate(
+        {
+          ...pricingDetails(),
+          commissionType: "unknown",
+        } as unknown as CommissionDetails,
+        NOW,
+      ),
+    /Unknown commission option: unknown/,
+  );
+
+  assert.throws(
+    () =>
+      calculateEstimate(
+        {
+          ...pricingDetails(),
+          concepts: "1",
+        } as unknown as CommissionDetails,
+        NOW,
+      ),
+    /Unknown commission option: 1/,
+  );
+});
+
+test("price formatting handles fixed prices and ranges", () => {
+  assert.equal(formatPrice(6_500), "$65");
+  assert.equal(
+    formatEstimate({
+      currency: "USD",
+      min: 6_500,
+      max: 6_500,
+      lines: [],
+    }),
+    "$65",
+  );
+  assert.equal(
+    formatEstimate({
+      currency: "USD",
+      min: 6_500,
+      max: 8_500,
+      lines: [],
+    }),
+    "$65–$85",
+  );
+});

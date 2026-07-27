@@ -1,0 +1,22 @@
+name = "sheepex-commissions"
+main = "src/index.ts"
+compatibility_date = "2026-07-27"
+workers_dev = true
+
+[triggers]
+crons = ["*/5 * * * *"]
+
+[vars]
+ALLOWED_ORIGINS = "https://sheepex.org,https://www.sheepex.org,http://localhost:3000"
+BRAND_NAME = "sheepex_"
+SITE_URL = "https://sheepex.org"
+EMAIL_FROM = "sheepex commissions <commissions@sheepex.org>"
+EMAIL_REPLY_TO = "commissions@sheepex.org"
+COMMISSION_OWNER_EMAIL = "replace-me@example.com"
+VERIFICATION_TOKEN_TTL_MINUTES = "15"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sheepex-commissions"
+database_id = "replace-with-your-d1-database-id"
+migrations_dir = "migrations"

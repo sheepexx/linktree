@@ -7,6 +7,7 @@ const navItems = [
   { label: "osu!", href: "#osu" },
   { label: "projects", href: "#projects" },
   { label: "links", href: "#links" },
+  { label: "commissions", href: "/commission/" },
 ] as const;
 
 export function Header() {
