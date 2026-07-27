@@ -3,7 +3,7 @@ import test from "node:test";
 
 import { commissionConfig } from "../data/commissions";
 
-test("commission offerings are grouped into the requested art and GFX services", () => {
+test("commission offerings group related artwork into one later-specified choice", () => {
   assert.deepEqual(
     commissionConfig.commissionTypes.map(({ group, id, label }) => ({
       group,
@@ -17,8 +17,6 @@ test("commission offerings are grouped into the requested art and GFX services",
         id: "original-character",
         label: "Original characters",
       },
-      { group: "art", id: "fanart", label: "Fanart" },
-      { group: "art", id: "vtuber-art", label: "VTuber art" },
       { group: "gfx", id: "banner", label: "Banner" },
       { group: "gfx", id: "thumbnail", label: "Thumbnails" },
       {
@@ -28,6 +26,11 @@ test("commission offerings are grouped into the requested art and GFX services",
       },
       { group: "custom", id: "custom", label: "Custom request" },
     ],
+  );
+  assert.match(
+    commissionConfig.commissionTypes.find(({ id }) => id === "character-art")!
+      .description,
+    /Character art, fanart, or VTuber art/,
   );
 });
 

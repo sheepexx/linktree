@@ -37,12 +37,12 @@ test("calculateEstimate preserves the base price range", () => {
 
   assert.deepEqual(
     { currency: estimate.currency, min: estimate.min, max: estimate.max },
-    { currency: "USD", min: 2_000, max: 2_500 },
+    { currency: "USD", min: 2_000, max: 5_000 },
   );
   assert.deepEqual(
     estimate.lines.map(({ id, min, max }) => ({ id, min, max })),
     [
-      { id: "type", min: 2_000, max: 2_500 },
+      { id: "type", min: 2_000, max: 5_000 },
       { id: "use", min: 0, max: 0 },
       { id: "complexity", min: 0, max: 0 },
       { id: "concepts", min: 0, max: 0 },

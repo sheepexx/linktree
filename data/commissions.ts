@@ -26,8 +26,9 @@ export const commissionConfig = {
       id: "character-art",
       group: "art",
       label: "Character art",
-      description: "A polished illustration focused on one or more characters.",
-      price: { min: 2000, max: 2500 },
+      description:
+        "Character art, fanart, or VTuber art. Specify the exact kind in the project details.",
+      price: { min: 2000, max: 5000 },
     },
     {
       id: "original-character",
@@ -35,20 +36,6 @@ export const commissionConfig = {
       label: "Original characters",
       description: "Artwork or visual development for your own character.",
       price: { min: 3000, max: 4000 },
-    },
-    {
-      id: "fanart",
-      group: "art",
-      label: "Fanart",
-      description: "Artwork inspired by an existing character or series.",
-      price: { min: 2000, max: 2500 },
-    },
-    {
-      id: "vtuber-art",
-      group: "art",
-      label: "VTuber art",
-      description: "Character artwork created for a VTuber identity or channel.",
-      price: { min: 3500, max: 5000 },
     },
     {
       id: "banner",

@@ -310,7 +310,11 @@ export function DetailsStep({
         <TextAreaField
           id="projectDescription"
           label="Tell me about the project"
-          hint={`What should it communicate? Include the subject, mood, colors, text, or must-have elements. ${commissionConfig.limits.projectDescription.min} character minimum.`}
+          hint={
+            form.commissionType === "character-art"
+              ? `Start by saying whether you want character art, fanart, or VTuber art. Then include the subject, mood, colors, and must-have elements. ${commissionConfig.limits.projectDescription.min} character minimum.`
+              : `What should it communicate? Include the subject, mood, colors, text, or must-have elements. ${commissionConfig.limits.projectDescription.min} character minimum.`
+          }
           placeholder="The artwork is for… I want it to feel… Please include…"
           rows={7}
           value={form.projectDescription}
