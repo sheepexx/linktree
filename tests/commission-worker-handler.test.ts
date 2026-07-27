@@ -224,7 +224,7 @@ test("POST /v1/commissions persists a verified request, prices it on the server,
   assert.equal(body.confirmationPending, undefined);
   assert.deepEqual(
     { currency: body.estimate.currency, min: body.estimate.min, max: body.estimate.max },
-    { currency: "USD", min: 7_475, max: 9_775 },
+    { currency: "USD", min: 8_378, max: 10_974 },
   );
   assert.equal(
     body.estimate.lines.some((line) => line.id === "deadline"),
@@ -234,8 +234,8 @@ test("POST /v1/commissions persists a verified request, prices it on the server,
     body.estimate.lines.some(
       (line) =>
         line.id === "commercial" &&
-        line.min === 975 &&
-        line.max === 1_275,
+        line.min === 1_278 &&
+        line.max === 1_674,
     ),
     true,
   );
@@ -291,8 +291,8 @@ test("POST /v1/commissions persists a verified request, prices it on the server,
   );
   assert.deepEqual(insertRequest.values.slice(5, 8), [
     "USD",
-    7_475,
-    9_775,
+    8_378,
+    10_974,
   ]);
 
   assert.equal(emailProvider.messages.length, 2);
@@ -308,7 +308,7 @@ test("POST /v1/commissions persists a verified request, prices it on the server,
     assert.match(message.subject, new RegExp(REQUEST_ID));
     assert.match(message.html, new RegExp(REQUEST_ID));
     assert.match(message.text, new RegExp(REQUEST_ID));
-    assert.match(message.text, /Estimated total: \$75–\$98/);
+    assert.match(message.text, /Estimated total: \$84–\$110/);
   }
 
   assert.equal(database.runs.length, 2);

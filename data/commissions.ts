@@ -103,13 +103,13 @@ export const commissionConfig = {
       id: "creator",
       label: "Creator / channel",
       description: "For a public channel, stream, video, or community.",
-      price: { min: 500, max: 1000 },
+      price: { min: 600, max: 1200 },
     },
     {
       id: "release",
       label: "Release / campaign",
       description: "For a promoted release, event, or campaign.",
-      price: { min: 1000, max: 1500 },
+      price: { min: 1300, max: 2000 },
     },
   ],
   complexities: [
@@ -123,24 +123,24 @@ export const commissionConfig = {
       id: "detailed",
       label: "Detailed",
       description: "More layers, effects, and fine visual treatment.",
-      price: { min: 1000, max: 1500 },
+      price: { min: 1200, max: 1800 },
     },
     {
       id: "advanced",
       label: "Advanced",
       description: "Complex compositing and a highly worked finish.",
-      price: { min: 2000, max: 3500 },
+      price: { min: 2500, max: 4000 },
     },
   ],
   conceptOptions: [
     { id: 1, label: "1 concept", price: { min: 0, max: 0 } },
-    { id: 2, label: "2 concepts", price: { min: 1000, max: 1000 } },
-    { id: 3, label: "3 concepts", price: { min: 1500, max: 1500 } },
+    { id: 2, label: "2 concepts", price: { min: 1100, max: 1100 } },
+    { id: 3, label: "3 concepts", price: { min: 2300, max: 2300 } },
   ],
   revisionOptions: [
     { id: 1, label: "1 revision", price: { min: 0, max: 0 } },
-    { id: 2, label: "2 revisions", price: { min: 500, max: 500 } },
-    { id: 3, label: "3 revisions", price: { min: 1000, max: 1000 } },
+    { id: 2, label: "2 revisions", price: { min: 600, max: 600 } },
+    { id: 3, label: "3 revisions", price: { min: 1300, max: 1300 } },
   ],
   outputFormats: [
     {
@@ -153,25 +153,25 @@ export const commissionConfig = {
       id: "high-res",
       label: "High resolution",
       description: "A larger export suitable for flexible digital use.",
-      price: { min: 500, max: 500 },
+      price: { min: 600, max: 600 },
     },
     {
       id: "print",
       label: "Print ready",
       description: "High-resolution export prepared for print production.",
-      price: { min: 1000, max: 1500 },
+      price: { min: 1200, max: 1800 },
     },
     {
       id: "source",
       label: "Editable source file",
       description: "Layered working file plus the finished export.",
-      price: { min: 1500, max: 2000 },
+      price: { min: 2000, max: 2800 },
     },
   ],
   commercialUse: {
     label: "Commercial usage",
     description: "For paid promotion, products, client work, or monetized use.",
-    percentage: 15,
+    percentage: 18,
   },
   rushPricing: [
     {

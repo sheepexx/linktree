@@ -71,18 +71,18 @@ test("calculateEstimate adds option modifiers, rush pricing, and commercial usag
     estimate.lines.map(({ id, min, max }) => ({ id, min, max })),
     [
       { id: "type", min: 3_000, max: 4_000 },
-      { id: "use", min: 500, max: 1_000 },
-      { id: "complexity", min: 1_000, max: 1_500 },
-      { id: "concepts", min: 1_000, max: 1_000 },
-      { id: "revisions", min: 500, max: 500 },
-      { id: "format", min: 500, max: 500 },
+      { id: "use", min: 600, max: 1_200 },
+      { id: "complexity", min: 1_200, max: 1_800 },
+      { id: "concepts", min: 1_100, max: 1_100 },
+      { id: "revisions", min: 600, max: 600 },
+      { id: "format", min: 600, max: 600 },
       { id: "deadline", min: 1_000, max: 1_000 },
-      { id: "commercial", min: 975, max: 1_275 },
+      { id: "commercial", min: 1_278, max: 1_674 },
     ],
   );
   assert.deepEqual(
     { min: estimate.min, max: estimate.max },
-    { min: 8_475, max: 10_775 },
+    { min: 9_378, max: 11_974 },
   );
 });
 
@@ -115,9 +115,9 @@ test("commercial usage excludes the fixed rush fee from its subtotal", () => {
   assert.deepEqual(commercial, {
     id: "commercial",
     label: "Commercial usage",
-    detail: "15% usage fee",
-    min: Math.round(usageSubtotal.min * 0.15),
-    max: Math.round(usageSubtotal.max * 0.15),
+    detail: "18% usage fee",
+    min: Math.round(usageSubtotal.min * 0.18),
+    max: Math.round(usageSubtotal.max * 0.18),
   });
   assert.equal(estimate.min, usageSubtotal.min + 1_000 + commercial!.min);
   assert.equal(estimate.max, usageSubtotal.max + 1_000 + commercial!.max);
