@@ -20,11 +20,4 @@ export const projects: readonly Project[] = [
     liveUrl:
       "https://chromewebstore.google.com/detail/osu-mutual-finder/apgaopfjcbbhdphdlagbfhfighiboncg",
   },
-  {
-    id: "kps-bpm-tester",
-    name: "KPS and BPM Tester",
-    description: "a keyboard-speed and BPM testing tool for rhythm games.",
-    status: "online",
-    liveUrl: "https://sheepex.net/kps-tester/",
-  },
 ];

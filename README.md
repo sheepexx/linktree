@@ -26,7 +26,6 @@ This repository intentionally ships with labelled placeholder graphics and manua
 - GFX contact-sheet, list, and file-browser views
 - Privacy-gated YouTube and Bilibili players that load only after an explicit click
 - Project archive and a centralized link directory with no live vanity metrics
-- Decorative four-key rhythm/KPS interaction that is not required for navigation
 - Command palette (`Ctrl`/`Cmd` + `K`), modifier-based section shortcuts, keyboard-friendly controls, and an accessible direct route to the optional folder
 - Default, night, pink, monochrome, and unlockable archive themes stored locally in the browser
 - Static metadata, `robots.txt`, and sitemap generation based on the public online identity
